@@ -12,10 +12,12 @@ const Coffee = db.define('coffee', {
 });
 
 // Adds love to all drinks <3
-Coffee.beforeValidate((instance, options) =>{
-  const ing = instance.dataValues.ingredients;
-  if(!ing.includes('love')){
-    ing.push('love');
+Coffee.beforeValidate(instance =>{
+  if(instance.ingredients === undefined){
+    instance.ingredients = ['love'];
+  }
+  if(!instance.ingredients.includes('love')){
+    instance.ingredients.push('love');
   }
 });
 
