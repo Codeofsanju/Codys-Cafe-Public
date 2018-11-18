@@ -141,7 +141,7 @@ describe('Pug model', () => {
     })
   })
 
-  xdescribe('hooks', () => {
+  describe('hooks', () => {
     it('capitalizes a pug\'s name before saving it to the database', async () => {
       const pug = await Pug.create({name: 'joe'})
 
