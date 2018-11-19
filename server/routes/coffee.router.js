@@ -18,6 +18,19 @@ router.get('/', async function(req, res, next){
     }
 });
 
+// creates a new coffee and sends back the new coffee
+router.post('/', async function(req, res, next){
+    // console.log(req.body);
+    try {
+        const newCoffee = await Coffee.create(req.body);
+        res.status(201);
+        res.send(newCoffee);
+    }  catch (error) {
+        next(error);
+    }
+});
+
+
 // coffee by specified id
 router.get('/:coffeeId', async function (req, res, next){
     // console.log(req.params.coffeeId);
